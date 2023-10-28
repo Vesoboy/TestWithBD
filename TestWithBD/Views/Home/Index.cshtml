@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Page";
+}
+@if (Model.Any())
+{
+    <a>@await Html.PartialAsync("AddProduct", Model.FirstOrDefault())</a>
+    <a>@await Html.PartialAsync("AddCategory",Model.FirstOrDefault())</a>
+
+    @await Html.PartialAsync("DeleteModalCategory",Model.FirstOrDefault())
+}
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Название товара</th>
+            <th scope="col">Категория</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle">@item.Name</td>
+                <td class="align-middle">@item.Category.Name</td>
+                <td class="align-middle">
+                    <div class="row justify-content-start">
+                        <div class="col-3">
+                            @await Html.PartialAsync("EditProduct",item)
+                        </div>
+                        <div class="col-7">
+                            @await Html.PartialAsync("DeleteProduct",item)
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

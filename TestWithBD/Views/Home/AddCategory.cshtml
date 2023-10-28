@@ -1,0 +1,28 @@
+﻿@model Product
+
+<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addModalCategory">
+    Добавить категорию
+</button>
+
+
+<div class="modal fade" id="addModalCategory" tabindex="-1" role="dialog" aria-labelledby="addModalLabelCategory" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form asp-action="AddCategory" asp-controller="Home" method="post">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="addModalLabelCategory">Добавить категорию</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="Category.Name" class="control-label">Название Категории</label>
+                        <input type="text" asp-for="Category.Name" class="form-control" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Добавить" class="btn btn-light" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
